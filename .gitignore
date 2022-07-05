@@ -132,3 +132,7 @@ dmypy.json
 *.dol
 wit
 Syati-main
+*.iso
+*.wbfs
+smg2.d
+Super Mario Starshine*

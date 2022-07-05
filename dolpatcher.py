@@ -51,7 +51,6 @@ if __name__ == '__main__':
         raise Exception("Did not specify a target region.")
     region = argv[1]
     if SYSTEM != 'windows':
-        print(SYSTEM)
         raise Exception("Non-Windows systems are not supported ATM.")
 
     name = WIT.download()
@@ -100,5 +99,9 @@ if __name__ == '__main__':
     WIT.execute(f'dolpatch loader\\{region}.dol xml={PATCHES}')
 
     shutil.copyfile(f'loader\\{region}.dol', filepath)
+
+    shutil.rmtree("Syati-main")
+
+    shutil.rmtree('wit')
 
     print("Finished!")
