@@ -70,6 +70,8 @@ if __name__ == '__main__':
 
     os.remove(name)
 
+    print("Extracting SMG2...")
+
     WIT.execute(f'extract -s ../ -1 -n SB4.01 . smg2.d --psel=DATA -ovv')
 
     reg = WIT.executeandcaptrue('ID6 -s ../ -1 -n SB4.01 .')[3]
@@ -78,12 +80,18 @@ if __name__ == '__main__':
 
     region = region[region.index('.') + 1:]
 
+    print("Downloading Starshine...")
+
     name = STARSHINE.download()
+
+    print("Extracting Starshine...")
 
     with ZipFile(name, "r") as r:
         r.extractall()
 
     os.remove(name)
+
+    print("Copying Starshine files to extracted SMG2...")
 
     orig = Path('smg2.d\\files').absolute()
     
@@ -107,7 +115,9 @@ if __name__ == '__main__':
                 shutil.copy(file, f'{orig}\\{dir.name}\\{file.name}')
         elif dir.is_file():
             shutil.copy(dir, f'{orig}\\{dir.name}')
-        
+
+    print("Downloading Syati...")
+
     name = SYATI.download()
 
     with ZipFile(name, "r") as r:
@@ -131,7 +141,9 @@ if __name__ == '__main__':
 
     subprocess.run("syatisetup.exe", shell=True)
 
-    os.chdir('../')        
+    os.chdir('../')
+
+    print("Patching SMG2's main.dol...")        
 
     filepath = Path(f'{HOME_DIR}\\smg2.d\\sys\\main.dol').absolute()
 
@@ -145,6 +157,8 @@ if __name__ == '__main__':
 
     os.chdir(HOME_DIR)
 
+    print("Rebuilding SMG2...")
+
     WIT.execute('copy smg2.d "Super Mario Starshine.wbfs" -ovv --id=....01 --name="Super Mario Starshine"')
 
     shutil.rmtree('smg2.d')
@@ -154,3 +168,5 @@ if __name__ == '__main__':
     shutil.rmtree('wit')
 
     shutil.rmtree('Syati-main')
+
+    print("Completed!")
