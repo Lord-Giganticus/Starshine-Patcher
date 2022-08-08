@@ -52,7 +52,7 @@ class Region(Enum):
 SYATI = URLDependency('https://github.com/SunakazeKun/Syati/archive/refs/heads/main.zip')
 SYATISETUP = URLDependency('https://github.com/Lord-Giganticus/SyatiSetup/releases/download/Auto/syatisetup.exe')
 WIT = URLDependency('https://cdn.discordapp.com/attachments/886616711925751829/993881870666305578/wit.zip')
-STARSHINE = URLDependency('https://github.com/Lord-Giganticus/Lord-Giganticus.github.io/releases/download/auto/Super.Mario.Starshine.Demo.v1.4.zip')
+STARSHINE = URLDependency('https://github.com/SPG64/Super-Mario-Starshine/releases/download/v1.4/Super.Mario.Starshine.Demo.v1.4.zip')
 PATCHES = Path('patches.xml').absolute()
 HOME_DIR = Path(__file__).parent.absolute()
 SYSTEM = system().lower()
