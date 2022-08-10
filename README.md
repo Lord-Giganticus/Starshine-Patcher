@@ -14,7 +14,7 @@ The offical ISO/DOL patcher for the Super Mario Starshine mod.
 * This script will check the region of the Disk Image to make the correct patches.
 
 ## starshine-patcher.exe
-* Run the executable either by double clicking it or invoking it and make sure **A SMG2 DISK IMAGE IS IN THE SAME DIR AS THE PYTHON FILE**
+* Run the executable either by double clicking it or invoking it and make sure **A SMG2 DISK IMAGE IS IN THE SAME DIR AS EXE**
 * This may take a minute or two depending on internet and cpu power.
 * This script will check the region of the Disk Image to make the correct patches.
 
