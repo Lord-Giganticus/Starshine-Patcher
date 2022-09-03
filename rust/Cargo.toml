@@ -8,9 +8,6 @@ edition = "2021"
 [dependencies]
 git2 = "0.15.0"
 indicatif = "0.17.0"
-path-absolutize = "3.0.13"
 reqwest = { version = "0.11.11", features = ["blocking"] }
 thread-control = { git = "https://github.com/DenisKolodin/thread-control", version = "0.1.2" }
-
-[build-dependencies]
-reqwest = { version = "0.11.11", features = ["blocking"] }
+zip = "0.6.2"

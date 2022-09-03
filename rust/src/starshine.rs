@@ -1,11 +1,6 @@
-use std::fs::rename;
-use std::process::Command;
+use crate::funcs;
 
 pub(crate) fn copy_files() {
-    crate::consts::extractcopy();
-    rename("Syati\\rustpython.exe", "rustpython.exe").unwrap();
-    let mut p = std::env::current_dir().unwrap();
-    p.push("rustpython.exe");
-    Command::new(p).arg("copy.py").spawn().unwrap().wait().unwrap();
-    rename("rustpython.exe", "Syati\\rustpython.exe").unwrap();
+    funcs::copy_dir_all("Super Mario Starshine Demo v1.4\\Super Mario Starshine",
+    "smg2.d\\files").unwrap();
 }

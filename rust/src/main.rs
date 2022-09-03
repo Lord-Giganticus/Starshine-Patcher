@@ -23,8 +23,6 @@ fn delete() {
     std::fs::remove_dir_all("smg2.d").unwrap_or_default();
     std::fs::remove_file("Super.Mario.Starshine.Demo.v1.4.zip").unwrap_or_default();
     std::fs::remove_file("wit.zip").unwrap_or_default();
-    std::fs::remove_file("7z.exe").unwrap_or_default();
-    std::fs::remove_file("copy.py").unwrap_or_default();
     std::fs::remove_file("repack.py").unwrap_or_default();
 }
 
@@ -37,6 +35,9 @@ fn main() {
     println!("Downloading deps...");
     let mut path = std::env::current_dir().unwrap();
     path.push("Syati");
+    if path.exists() && path.is_dir() {
+        std::fs::remove_dir_all(&path).unwrap_or_default();
+    }
     Repository::clone(SYATI, path).unwrap();
     let mut prog = indicatif::ProgressBar::new(0);
     let msg = funcs::downloadfile(SMS, &prog, false);

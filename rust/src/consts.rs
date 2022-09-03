@@ -1,7 +1,3 @@
-pub(crate) const SEVENZIP: &[u8] = include_bytes!("..\\7z.exe");
-
-pub(crate) const COPY: &[u8] = include_bytes!("..\\copy.py");
-
 pub(crate) const PATCHES: &[u8] = include_bytes!("..\\patches.xml");
 
 pub(crate) const REPACK: &[u8] = include_bytes!("..\\repack.py");
@@ -23,7 +19,5 @@ macro_rules! impl_extract {
     };
 }
 
-impl_extract!(SEVENZIP, extractsevenzip, "7z.exe");
-impl_extract!(COPY, extractcopy, "copy.py");
 impl_extract!(PATCHES, extractpatches, "patches.xml");
 impl_extract!(REPACK, extractrepack, "repack.py");

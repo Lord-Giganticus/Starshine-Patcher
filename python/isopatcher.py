@@ -97,24 +97,7 @@ if __name__ == '__main__':
     
     starshine = Path('Super Mario Starshine Demo v1.4\\Super Mario Starshine').absolute()
 
-    for dir in starshine.glob('*'):
-        if dir.name == "AudioRes" or dir.name == "StageData":
-            for idir in dir.glob('*'):
-                for file in idir.glob('*.*'):
-                    os.makedirs(f'{orig}\\{dir.name}\\{idir.name}', exist_ok=True)
-                    shutil.copy(file, f'{orig}\\{dir.name}\\{idir.name}\\{file.name}')
-        elif dir.name == "LocalizeData":
-            for ldir in dir.glob('*'):
-                    for idir in ldir.glob('*'):
-                        os.makedirs(f'{orig}\\{dir.name}\\{ldir.name}\\{idir.name}', exist_ok=True)
-                        for file in idir.glob('*'):
-                            shutil.copy(file, f'{orig}\\{dir.name}\\{ldir.name}\\{idir.name}\\{file.name}')
-        elif dir.is_dir():
-            os.makedirs(f'{orig}\\{dir.name}', exist_ok=True)
-            for file in dir.glob('*'):
-                shutil.copy(file, f'{orig}\\{dir.name}\\{file.name}')
-        elif dir.is_file():
-            shutil.copy(dir, f'{orig}\\{dir.name}')
+    shutil.copytree(starshine, orig, dirs_exist_ok=True)
 
     print("Downloading Syati...")
 
