@@ -16,7 +16,7 @@ pub(crate) fn patch(reg: Region) {
     use pyo3::ffi::*;
     use std::ffi::CString;
     use widestring::*;
-    use libc::fopen;
+    use libc::*;
     let mut name = u16cstr!("buildloader.py").to_owned();
     unsafe { Py_SetProgramName(name.as_ptr()) };
     unsafe { Py_Initialize() };
@@ -28,6 +28,7 @@ pub(crate) fn patch(reg: Region) {
     let file = unsafe { fopen(name.as_ptr(), mode.as_ptr()) };
     unsafe { PyRun_SimpleFile(file, name.as_ptr()) };
     unsafe { Py_Finalize() };
+    unsafe { fclose(file) };
 }
 
 pub(crate) fn copydol(reg: Region) {
