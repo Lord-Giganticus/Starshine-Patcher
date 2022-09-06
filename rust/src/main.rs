@@ -47,8 +47,8 @@ fn main() {
     sevenzip::extractarchive(&msg);
     let dir = std::env::current_dir().unwrap();
     std::env::set_current_dir("Syati").unwrap();
-    prog = indicatif::ProgressBar::new(0);
-    funcs::getrustpython(&prog);
+    #[cfg(not(feature = "pyo3"))]
+    funcs::getrustpython(&mut prog);
     prog = indicatif::ProgressBar::new(0);
     funcs::usesyatisetup(&prog);
     std::env::set_current_dir(&dir).unwrap();

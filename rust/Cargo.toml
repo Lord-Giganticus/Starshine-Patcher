@@ -8,6 +8,12 @@ edition = "2021"
 [dependencies]
 git2 = "0.15.0"
 indicatif = "0.17.0"
+libc = { version = "0.2.132", optional = true }
+pyo3 = { version = "0.17.1", features = ["auto-initialize"], optional = true }
 reqwest = { version = "0.11.11", features = ["blocking"] }
 thread-control = { git = "https://github.com/DenisKolodin/thread-control", version = "0.1.2" }
+widestring = { version = "1.0.2", optional = true }
 zip = "0.6.2"
+
+[features]
+pyo3 = ["dep:pyo3", "dep:widestring", "dep:libc"]

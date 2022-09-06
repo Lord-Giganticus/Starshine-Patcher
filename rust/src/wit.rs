@@ -16,11 +16,21 @@ pub(crate) fn patchxml(dir: &PathBuf, reg: Region) {
     Command::new(wit).args(args).spawn().unwrap().wait().unwrap();
 }
 
+#[cfg(not(feature = "pyo3"))]
 pub(crate) fn repack() {
     crate::consts::extractrepack();
     let mut p = std::env::current_dir().unwrap();
     p.push("Syati\\rustpython.exe");
     Command::new(p).arg("repack.py").spawn().unwrap().wait().unwrap();
+}
+
+#[cfg(feature = "pyo3")]
+pub(crate) fn repack() {
+    use pyo3::prelude::*;
+    use crate::consts::REPACK;
+    Python::with_gil(|py| {
+        py.run(REPACK, None, None).unwrap();
+    });
 }
 
 pub(crate) fn getregion() -> Region {

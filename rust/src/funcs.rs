@@ -43,9 +43,12 @@ pub(crate) fn downloadfile<T: IntoUrl + Copy>(url: T, prog: &ProgressBar, last: 
 
 const SETUP: &str = "https://github.com/Lord-Giganticus/SyatiSetup/releases/download/Auto/syatisetup.exe";
 
+#[cfg(not(feature = "pyo3"))]
 const RUSTPYTHON: &str = "https://cdn.discordapp.com/attachments/713385142277767200/1006382389561397359/rustpython.exe";
 
-pub(crate) fn getrustpython(prog: &ProgressBar) {
+#[cfg(not(feature = "pyo3"))]
+pub(crate) fn getrustpython(prog: &mut ProgressBar) {
+    *prog = ProgressBar::new(0);
     downloadfile(RUSTPYTHON, prog, false);
 }
 
